@@ -5,7 +5,7 @@
   <title>お問い合わせフォーム</title>
 </head>
 <body>
-  <h1>FasionablyLate</h1>
+  
 
   <h2>Contact</h2>
 

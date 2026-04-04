@@ -17,4 +17,26 @@ class ContactController extends Controller
         $data = $request->all();
         return view('confirm', compact('data'));
     }
+
+    public function thanks()
+    {
+        return view('thanks');
+    }
+
+    public function register()
+    {
+        return view('register');
+    }
+
+    public function login()
+    {
+        return view('login');
+    }
+
+    public function admin()
+    {
+        return view('admin');
+    }
+
+    
 }
