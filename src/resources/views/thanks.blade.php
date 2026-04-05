@@ -7,6 +7,8 @@
 </head>
 <body>
 
+
+
     <div class="thanks-box">
         <h1>お問い合わせありがとうございました</h1>
         

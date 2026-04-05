@@ -2,5 +2,110 @@
     text-align: center;
     font-size: 40px;
     font-family: "Times New Roman", "游明朝", serif;
+    border-bottom: 1px solid #cfc0c0;
+    padding-bottom: 10px;
+    color: rgb(139, 121, 105);
+}
+
+.title {
+    text-align: center;
+    font-size: 35px;
+    color: rgb(139, 121, 105);
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-family: "Times New Roman", "游明朝", serif;
+}
+body {
+    font-family: sans-serif;
+    background-color: #ffffffff;
+    color: rgb(139, 121, 105)
+}
+
+
+.contact-form {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+
+.contact-form-group>div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+
+.contact-form-group label:first-child {
+    width: 220px;
+    font-size: 14px;
+}
+
+
+.required {
+    color: red;
+}
+
+
+input,
+textarea {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background-color: #eee;
+    border-radius: 4px;
+
+}
+
+input::placeholder,
+textarea::placeholder {
+
+    color: rgb(139, 121, 105);
+
+    }
+
+select {
+        color: rgb(139, 121, 105);
+        flex: 0.5;
+        padding: 10px;
+        border: none;
+        background-color: #eee;
+        border-radius: 4px;
+        }
     
+
+
+.flex {
+    display: flex;
+    gap: 30px;
+    flex: 1;
+}
+
+.contact-form-tel input {
+    width: 80px;
+}
+
+.contact-form-gender {
+    display: flex;
+    align-items: center;
+}
+
+.contact-form-gender label {
+    width: auto;
+    margin-right: 20px;
+}
+
+textarea {
+    height: 120px;
+    resize: none;
+}
+
+button {
+    display: block;
+    margin: 40px auto;
+    padding: 10px 30px;
+    background-color: #baa899;
+    color: #fff;
+    border: none;
+    cursor: pointer;
 }

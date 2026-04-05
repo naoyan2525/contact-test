@@ -6,8 +6,11 @@
 </head>
 <body>
 
-<div class="container">
-  <h2>お問い合わせ内容の確認</h2>
+<div class="header">FashionablyLate</div>
+
+<div class="title">Confirm</div>
+
+<div class="confirm-form">
 
   <div class="row">
     <div class="label">お名前</div>

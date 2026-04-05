@@ -10,9 +10,10 @@
 
 <div class="header">FashionablyLate</div>
 
-<div class="container">
-    <h2 class="title">Admin</h2>
+  <div class="title">Admin</div>
 
+<div class="admin-form">
+  
     <!-- 検索エリア -->
     <div class="search-box">
         <input type="text" placeholder="名前やメールアドレスを入力してください">

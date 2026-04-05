@@ -6,23 +6,26 @@
 </head>
 <body>
 
+<div class="header">FashionablyLate</div>
+
+<h2 class="title">Register</h2>
+
 <div class="form-box">
-    <h1>Register</h1>
 
     <form action="/register" method="POST">
         @csrf
 
-        <div class="form-group">
+        <div class="form-item">
             <label>お名前</label>
-            <input type="text" name="name" placeholder="例：山田　太郎" required>
+            <input type="text" name="name" placeholder="例：山田 太郎" required>
         </div>
 
-        <div class="form-group">
+        <div class="form-item">
             <label>メールアドレス</label>
             <input type="email" name="email" placeholder="例：test@example.com" required>
         </div>
 
-        <div class="form-group">
+        <div class="form-item">
             <label>パスワード</label>
             <input type="password"  name="password" placeholder="例：coachtech1106" required>
         </div>
