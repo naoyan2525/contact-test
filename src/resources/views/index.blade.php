@@ -14,7 +14,7 @@
   <form action="/confirm" method="POST">
 
 <div class="contact-form">
-  
+
  <div class="contact-form-group">
     <!-- 名前 -->
     <div class="contact-form-name">
@@ -28,10 +28,14 @@
     <!-- 性別 -->
     <div class="contact-form-gender">
       <label>性別 <span class="required">※</span></label>
+    
       <label><input type="radio" name="gender" value="男性" required> 男性</label>
+   
       <label><input type="radio" name="gender" value="女性"> 女性</label>
+    
       <label><input type="radio" name="gender" value="その他"> その他</label>
     </div>
+
 
     <!-- メール -->
     <div class="contact-form-email">
@@ -64,12 +68,14 @@
     <!-- 種類 -->
     <div class="contact-form-category">
       <label>お問い合わせの種類 <span class="required">※</span></label>
+      <div class="select-wrapper">
       <select name="category" required>
         <option value="">選択してください</option>
         <option value="商品について">商品について</option>
         <option value="注文について">注文について</option>
         <option value="その他">その他</option>
       </select>
+      </div>
     </div>
 
     <!-- 内容 -->
