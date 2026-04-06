@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>会員登録</title>
+    <link rel="stylesheet" href="{{ asset('css/register.css') }}">
 </head>
 <body>
 
 <div class="header">FashionablyLate</div>
 
-<h2 class="title">Register</h2>
+<div class="title">Register</div>
 
 <div class="form-box">
 
@@ -32,7 +33,7 @@
 
         <button type="submit" class="btn">登録</button>
     </form>
-</div>
+</diclass=>
 
 </body>
 </html>

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>ログイン</title>
+    <link rel="stylesheet" href="{{ asset('css/register.css') }}">
    
 </head>
 <body>
@@ -24,7 +25,7 @@
 
         <div class="form-item">
             <label>パスワード</label>
-            <input type="password" name="password" placeholder="パスワードを入力" required>
+            <input type="password" name="password" placeholder="例：coachtech1106" required>
         </div>
 
         <button type="submit" class="btn">ログイン</button>
