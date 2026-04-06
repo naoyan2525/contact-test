@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>お問い合わせ完了</title>
+    <link rel="stylesheet" href="{{ asset('css/thanks.css') }}">
 
 </head>
 <body>
-
-
-
     <div class="thanks-box">
-        <h1>お問い合わせありがとうございました</h1>
-        
+
+        <h2 class="message">お問い合わせありがとうございました</h2>
+
         <a href="/" class="btn">HOME</a>
     </div>
 
