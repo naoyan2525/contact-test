@@ -14,9 +14,10 @@
   <form action="/confirm" method="POST">
 
 <div class="contact-form">
-
+@csrf
  <div class="contact-form-group">
-    <!-- 名前 -->
+  
+
     <div class="contact-form-name">
       <label>お名前 <span class="required">※</span></label>
       <div class="flex">
@@ -25,15 +26,15 @@
       </div>
     </div>
 
-    <!-- 性別 -->
+   
     <div class="contact-form-gender">
       <label>性別 <span class="required">※</span></label>
     
-      <label><input type="radio" name="gender" value="男性" required> 男性</label>
+      <label><input type="radio" name="gender" value="男性" {{ old('gender') == '男性' ? 'checked' : '' }} required> 男性</label>
    
-      <label><input type="radio" name="gender" value="女性"> 女性</label>
+      <label><input type="radio" name="gender" value="女性" {{ old('gender') == '女性' ? 'checked' : '' }}> 女性</label>
     
-      <label><input type="radio" name="gender" value="その他"> その他</label>
+      <label><input type="radio" name="gender" value="その他" {{ old('gender') == 'その他' ? 'checked' : '' }}> その他</label>
     </div>
 
 
@@ -53,19 +54,18 @@
       </div>
     </div>
 
-    <!-- 住所 -->
+  
     <div class="contact-form-address">
       <label>住所 <span class="required">※</span></label>
       <input type="text" name="address" placeholder="例：東京都渋谷区千駄ヶ谷1-2-3" required>
     </div>
 
-    <!-- 建物名 -->
+    
     <div class="contact-form-building">
       <label>建物名 <span class="required">※</span></label>
       <input type="text" name="building" placeholder="例：千駄ヶ谷マンション101" required>
     </div>
 
-    <!-- 種類 -->
     <div class="contact-form-category">
       <label>お問い合わせの種類 <span class="required">※</span></label>
       <div class="select-wrapper">
@@ -78,7 +78,7 @@
       </div>
     </div>
 
-    <!-- 内容 -->
+  
     <div class="contact-form-message">
       <label>お問い合わせの内容 <span class="required">※</span></label>
       <textarea name="message" placeholder="お問い合わせ内容をご記載ください" rows="5" required></textarea>
