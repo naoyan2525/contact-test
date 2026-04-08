@@ -9,7 +9,10 @@
 
 <body>
 
-<div class="header">FashionablyLate</div>
+<div class="header">
+    FashionablyLate
+    <a href="/register" class="register-btn">Register</a>
+</div>
 
   <div class="title">Admin</div>
 
