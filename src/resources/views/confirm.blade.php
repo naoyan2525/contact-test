@@ -53,7 +53,7 @@
     <div class="value" id="detail">{{ $contact['message'] }}</div>
   </div>
 
-  <form action="/thanks" method="POST">
+  <form action="/store" method="POST">
     @csrf
 
     <input type="hidden" name="last_name" value="{{ $contact['last_name'] }}">

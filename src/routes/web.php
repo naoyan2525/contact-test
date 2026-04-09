@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AuthController;
+use App\Models\Contact;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,4 +25,7 @@ Route::get('/register', [ContactController::class, 'register']);
 Route::get('/login', [ContactController::class, 'login']);
 Route::get('/admin',[ContactController::class, 'admin']);
 Route::get('/index', [AuthController::class, 'index']);
-
+Route::post('/store', [ContactController::class, 'store']);
+Route::get('/thanks', function () {
+    return view('thanks');
+})->name('thanks');
