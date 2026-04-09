@@ -17,7 +17,7 @@ class Contact extends Model
         'address',
         'building',
         'category',
-        'message',
+        'detail',
     ];
-    
+
 }

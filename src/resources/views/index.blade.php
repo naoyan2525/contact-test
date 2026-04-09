@@ -81,7 +81,7 @@
   
     <div class="contact-form-message">
       <label>お問い合わせの内容 <span class="required">※</span></label>
-      <textarea name="message" placeholder="お問い合わせ内容をご記載ください" rows="5" required></textarea>
+      <textarea name="detail" placeholder="お問い合わせ内容をご記載ください" rows="5" required></textarea>
     </div>
 
     <button type="submit">確認画面</button>
