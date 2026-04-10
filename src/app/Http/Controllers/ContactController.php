@@ -10,9 +10,12 @@ use App\Http\Requests\ContactRequest;
 class ContactController extends Controller
 {
     public function index()
-    {
-        return view('index');
-    }
+   {
+    $contacts = Contact::all();
+    return view('admin', compact('contacts'));
+}
+
+
 
     public function confirm(ContactRequest $request)
     {
@@ -37,9 +40,13 @@ class ContactController extends Controller
         return redirect()->route('thanks');
     }
 
+   public function show($id)
+{
+    return response()->json(Contact::find($id));
+}
 
     public function thanks()
-    {
+  {
         return view('thanks');
     }
 
@@ -53,10 +60,4 @@ class ContactController extends Controller
         return view('auth.login');
     }
 
-    public function admin()
-    {
-        return view('admin');
-    }
-
-    
 }

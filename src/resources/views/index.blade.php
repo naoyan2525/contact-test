@@ -22,17 +22,19 @@
       <label>お名前 <span class="required">※</span></label>
       <div class="flex">
         <input type="text" name="last_name" placeholder="※山田">
-        <input type="text" name="first_name" placeholder="※太郎">
-      </div>
-
+        
         @error('last_name')
          <p style="color:red;">{{ $message }}</p>
         @enderror
 
+        <input type="text" name="first_name" placeholder="※太郎">
+        
         @error('first_name')
          <p style="color:red;">{{ $message }}</p>
         @enderror
       </div>
+
+   </div>
 
    
     <div class="contact-form-gender">

@@ -17,11 +17,11 @@
   <div class="title">Admin</div>
 
 <div class="admin-form">
-  
+
     <!-- 検索エリア -->
     <div class="search-box">
         <input type="text" placeholder="名前やメールアドレスを入力してください">
-        
+
         <select>
             <option>性別</option>
             <option>男性</option>
@@ -38,7 +38,7 @@
         <button class="btn btn-light">リセット</button>
     </div>
 
-    <!-- テーブル -->
+    <!-- 一覧テーブル -->
     <table>
         <tr>
             <th>お名前</th>
@@ -48,24 +48,60 @@
             <th></th>
         </tr>
 
+        @foreach ($contacts as $contact)
         <tr>
-            <td>山田 太郎</td>
-            <td>男性</td>
-            <td>test@example.com</td>
-            <td>商品の交換について</td>
-            <td><button class="detail-btn">詳細</button></td>
+            <td>{{ $contact->last_name }} {{ $contact->first_name }}</td>
+            <td>{{ $contact->gender }}</td>
+            <td>{{ $contact->email }}</td>
+            <td>{{ $contact->category }}</td>
+            <td>
+                <a href="#" class="detail-btn"
+                   onclick="openModal({{ $contact->id }})">
+                    詳細
+                </a>
+            </td>
         </tr>
-
-        <tr>
-            <td>佐藤 花子</td>
-            <td>女性</td>
-            <td>hana@example.com</td>
-            <td>返品について</td>
-            <td><button class="detail-btn">詳細</button></td>
-        </tr>
-
+        @endforeach
     </table>
+
 </div>
+
+<!-- モーダル -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span id="close">×</span>
+        <div id="modal-body"></div>
+    </div>
+</div>
+
+<!-- JS -->
+<script>
+function openModal(id) {
+    fetch(`/admin/${id}`)
+        .then(res => res.json())
+        .then(data => {
+            document.getElementById('modal-body').innerHTML = `
+                <p>名前：${data.last_name} ${data.first_name}</p>
+                <p>性別：${data.gender}</p>
+                <p>メール：${data.email}</p>
+                <p>電話：${data.tel}</p>
+                <p>住所：${data.address}</p>
+                <p>建物：${data.building}</p>
+                <p>種類：${data.category}</p>
+                <p>内容：${data.detail}</p>
+            `;
+
+            document.getElementById('modal').style.display = 'block';
+        });
+}
+
+// 閉じる処理
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('close').onclick = function () {
+        document.getElementById('modal').style.display = 'none';
+    };
+});
+</script>
 
 </body>
 </html>

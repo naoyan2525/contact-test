@@ -29,3 +29,5 @@ Route::post('/store', [ContactController::class, 'store']);
 Route::get('/thanks', function () {
     return view('thanks');
 })->name('thanks');
+Route::get('/admin', [ContactController::class, 'index']);
+Route::get('/admin/{id}', [ContactController::class, 'show']);
