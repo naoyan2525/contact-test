@@ -30,7 +30,7 @@
 
   <div class="row">
     <div class="label">電話番号</div>
-    <div class="value" id="tel">{{ $contact['tel1'] }}-{{ $contact['tel2'] }}-{{ $contact['tel3'] }}</div>
+    <div class="value" id="tel">{{ $contact['tel1'] }}{{ $contact['tel2'] }}{{ $contact['tel3'] }}</div>
   </div>
 
   <div class="row">

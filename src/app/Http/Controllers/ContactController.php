@@ -63,7 +63,7 @@ class ContactController extends Controller
         $contact->first_name = $request->input('first_name');
         $contact->gender = $request->input('gender');
         $contact->email = $request->input('email');
-        $contact->tel = $request->input('tel1') . '-' . $request->input('tel2') . '-' . $request->input('tel3');
+        $contact->tel = $request->input('tel1') . $request->input('tel2') . $request->input('tel3');
         $contact->address = $request->input('address');
         $contact->building = $request->input('building');
         $contact->category_id = $request->input('category_id');
