@@ -2,7 +2,7 @@
 ##お問い合わせフォーム
 
 ##環境構築
-・
+・https://github.com/naoyan2525/contact-test.git
 ・docker compose up -d --build
 
 ##Laravel環境構築
@@ -16,7 +16,7 @@
 ##開発環境
 ・お問い合わせ画面：http://localhost/
 ・ユーザー登録：http://localhost/register
-・phpMyAdomin：hrrp://localhost:8080/
+・phpMyAdomin：http://localhost:8080/
 
 ##使用技術（実行環境）
 
