@@ -17,5 +17,6 @@ Route::post('/logout', [AuthController::class, 'logout']);
 Route::post('/login', [AuthController::class, 'loginProcess']);
 
 Route::get('/admin', [ContactController::class, 'admin']);
+Route::get('/admin/export', [ContactController::class, 'export'])->name('admin.export');
 Route::get('/admin/{id}', [ContactController::class, 'show']);
-Route::delete('/admin/{id}', [ContactController::class, 'destroy'])->name('admin.destroy');
+Route::delete('/admin/{id}', [ContactController::class, 'destroy']);
