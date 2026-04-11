@@ -59,15 +59,27 @@
         <div class="export-pagination">
             <button type="button" class="export-btn">エクスポート</button>
 
-            <div class="pagination">
-                <a href="#" class="page-btn">&lt;</a>
-                <a href="#" class="page-number active">1</a>
-                <a href="#" class="page-number">2</a>
-                <a href="#" class="page-number">3</a>
-                <a href="#" class="page-number">4</a>
-                <a href="#" class="page-number">5</a>
-                <a href="#" class="page-btn">&gt;</a>
-            </div>
+           <div class="pagination">
+    @if ($contacts->onFirstPage())
+        <span class="page-btn disabled">&lt;</span>
+    @else
+        <a href="{{ $contacts->appends(request()->query())->previousPageUrl() }}" class="page-btn">&lt;</a>
+    @endif
+
+    @for ($i = 1; $i <= $contacts->lastPage(); $i++)
+        @if ($i == $contacts->currentPage())
+            <span class="page-number active">{{ $i }}</span>
+        @else
+            <a href="{{ $contacts->appends(request()->query())->url($i) }}" class="page-number">{{ $i }}</a>
+        @endif
+    @endfor
+
+    @if ($contacts->hasMorePages())
+        <a href="{{ $contacts->appends(request()->query())->nextPageUrl() }}" class="page-btn">&gt;</a>
+    @else
+        <span class="page-btn disabled">&gt;</span>
+    @endif
+</div>
         </div>
 
         <table class="contact-table">
