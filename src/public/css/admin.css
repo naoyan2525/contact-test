@@ -47,7 +47,8 @@ body {
 .admin-form {
     width: 960px;
     margin: 0 auto;
-    padding-bottom: 80px;;
+    padding-bottom: 80px;
+}
 
 /* 検索エリア */
 .search-box {
@@ -143,11 +144,20 @@ body {
     align-items: center;
     box-sizing: border-box;
     flex-shrink: 0;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #7a6b63;
 }
 
 .btn-light {
     background-color: rgb(219, 202, 186);
     color: #ffffff;
+}
+
+.btn-light:hover {
+    background-color: rgb(205, 185, 166);
 }
 
 .export-pagination {
@@ -164,6 +174,7 @@ body {
     border: none;
     font-size: 14px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .export-btn:hover {
@@ -174,6 +185,7 @@ body {
 .pagination {
     display: flex;
     align-items: center;
+    gap: 0;
 }
 
 .page-btn,
@@ -189,6 +201,12 @@ body {
     align-items: center;
     text-decoration: none;
     box-sizing: border-box;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.page-btn:hover,
+.page-number:hover {
+    background-color: #f3ece7;
 }
 
 .page-number.active {
@@ -218,6 +236,17 @@ body {
     border: 1px solid #e0d6d0;
     font-size: 14px;
     vertical-align: middle;
+    transition: background-color 0.3s;
+}
+
+/* ヘッダー以外の行にhover */
+.contact-table tr:not(:first-child):hover td {
+    background-color: #f7f3ef;
+}
+
+/* 行にマウスが乗った感じを少し出す */
+.contact-table tr:not(:first-child) {
+    transition: background-color 0.3s;
 }
 
 .detail-btn {
@@ -230,11 +259,12 @@ body {
     text-decoration: none;
     font-size: 14px;
     margin: 0 auto;
-        
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .detail-btn:hover {
-    background-color: #f3ece7;
+    background-color: #8b7969;
+    color: #ffffff;
 }
 
 .no-data {
@@ -281,7 +311,7 @@ body {
     color: #fff;
     border: none;
     cursor: pointer;
-
+    transition: background-color 0.3s;
 }
 
 .delete-btn:hover {
