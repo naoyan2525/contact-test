@@ -16,9 +16,40 @@ class ContactController extends Controller
         return view('index', compact('categories'));
     }
 
-    public function admin()
+    public function admin(Request $request)
     {
-        $contacts = Contact::with('category')->paginate(7);
+        $query = Contact::with('category');
+
+        // キーワード検索（姓・名・メールアドレス）
+        if ($request->filled('keyword')) {
+            $keyword = $request->keyword;
+
+            $query->where(function ($q) use ($keyword) {
+                $q->where('last_name', 'like', '%' . $keyword . '%')
+                  ->orWhere('first_name', 'like', '%' . $keyword . '%')
+                  ->orWhere('email', 'like', '%' . $keyword . '%');
+            });
+        }
+
+        // 性別検索
+        if ($request->filled('gender')) {
+            $query->where('gender', $request->gender);
+        }
+
+        // お問い合わせ種類検索
+        if ($request->filled('category')) {
+            $query->whereHas('category', function ($q) use ($request) {
+                $q->where('content', $request->category);
+            });
+        }
+
+        // 日付検索
+        if ($request->filled('date')) {
+            $query->whereDate('created_at', $request->date);
+        }
+
+        $contacts = $query->paginate(7)->appends($request->query());
+
         return view('admin', compact('contacts'));
     }
 
