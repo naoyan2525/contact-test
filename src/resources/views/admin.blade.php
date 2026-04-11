@@ -10,9 +10,12 @@
 
     <div class="header">
         FashionablyLate
-        <a href="/logout" class="register-btn">logout</a>
+    <form action="/logout" method="POST" style="display:inline;">
+    @csrf
+    <button type="submit" class="register-btn">logout</button>
+    </form>
     </div>
-
+    
     <div class="title">Admin</div>
 
     <div class="admin-form">

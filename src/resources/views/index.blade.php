@@ -94,9 +94,11 @@
       <div class="select-wrapper">
       <select name="category">
         <option value="">選択してください</option>
-        <option value="商品について">商品について</option>
-        <option value="注文について">注文について</option>
-        <option value="その他">その他</option>
+        <option value="商品のお届けについて">1. 商品のお届けについて</option>
+        <option value="商品の交換について">2. 商品の交換について</option>
+        <option value="商品トラブル">3. 商品トラブル</option>
+        <option value="ショップへのお問い合わせ">4. ショップへのお問い合わせ</option>
+        <option value="その他">5. その他</option>
       </select>
       @error('category')
          <p style="color:red;">{{ $message }}</p>
