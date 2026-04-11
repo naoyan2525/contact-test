@@ -8,13 +8,19 @@ use App\Models\Contact;
 use App\Http\Requests\ContactRequest;
 
 class ContactController extends Controller
+
+
 {
     public function index()
-   {
+    {
+        return view('index');
+    }
+
+    public function admin()
+{
     $contacts = Contact::all();
     return view('admin', compact('contacts'));
 }
-
 
 
     public function confirm(ContactRequest $request)
