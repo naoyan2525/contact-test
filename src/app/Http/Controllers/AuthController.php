@@ -69,7 +69,7 @@ class AuthController extends Controller
         }
 
         return back()->withErrors([
-            'email' => 'メールアドレスかパスワードが間違っています',
+            'email' => 'ログイン情報が登録されていません',
         ])->withInput();
     }
 
