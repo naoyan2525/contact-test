@@ -2,20 +2,20 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>管理画面</title>
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
 
     <div class="header">
         FashionablyLate
-    <form action="/logout" method="POST" style="display:inline;">
-    @csrf
-    <button type="submit" class="register-btn">logout</button>
-    </form>
+        <form action="/logout" method="POST" style="display:inline;">
+            @csrf
+            <button type="submit" class="register-btn">logout</button>
+        </form>
     </div>
-    
+
     <div class="title">Admin</div>
 
     <div class="admin-form">
@@ -84,7 +84,7 @@
                     <td>{{ $contact->last_name }} {{ $contact->first_name }}</td>
                     <td>{{ $contact->gender }}</td>
                     <td>{{ $contact->email }}</td>
-                    <td>{{ $contact->category }}</td>
+                    <td>{{ $contact->category->content ?? '' }}</td>
                     <td>
                         <button type="button" class="detail-btn" onclick="openModal({{ $contact->id }})">
                             詳細
@@ -105,85 +105,85 @@
             <span id="close" class="close-btn">×</span>
             <div id="modal-body"></div>
 
-        <div class="modal-footer">
-            <button id="delete-btn" class="delete-btn">削除</button>
-        </div>
+            <div class="modal-footer">
+                <button id="delete-btn" class="delete-btn">削除</button>
+            </div>
         </div>
     </div>
 
     <script>
-    let currentId = null;
+        let currentId = null;
 
-    function openModal(id) {
-        currentId = id;
+        function openModal(id) {
+            currentId = id;
 
-        fetch(`/admin/${id}`)
-            .then(res => res.json())
-            .then(data => {
-                document.getElementById('modal-body').innerHTML = `
-                    <div class="modal-row"><strong>お名前</strong><span>${data.last_name} ${data.first_name}</span></div>
-                    <div class="modal-row"><strong>性別</strong><span>${data.gender}</span></div>
-                    <div class="modal-row"><strong>メールアドレス</strong><span>${data.email}</span></div>
-                    <div class="modal-row"><strong>電話番号</strong><span>${data.tel}</span></div>
-                    <div class="modal-row"><strong>住所</strong><span>${data.address}</span></div>
-                    <div class="modal-row"><strong>建物名</strong><span>${data.building ?? ''}</span></div>
-                    <div class="modal-row"><strong>お問い合わせの種類</strong><span>${data.category}</span></div>
-                    <div class="modal-row"><strong>お問い合わせ内容</strong><span>${data.detail}</span></div>
-                `;
+            fetch(`/admin/${id}`)
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById('modal-body').innerHTML = `
+                        <div class="modal-row"><strong>お名前</strong><span>${data.last_name} ${data.first_name}</span></div>
+                        <div class="modal-row"><strong>性別</strong><span>${data.gender}</span></div>
+                        <div class="modal-row"><strong>メールアドレス</strong><span>${data.email}</span></div>
+                        <div class="modal-row"><strong>電話番号</strong><span>${data.tel}</span></div>
+                        <div class="modal-row"><strong>住所</strong><span>${data.address}</span></div>
+                        <div class="modal-row"><strong>建物名</strong><span>${data.building ?? ''}</span></div>
+                        <div class="modal-row"><strong>お問い合わせの種類</strong><span>${data.category?.content ?? ''}</span></div>
+                        <div class="modal-row"><strong>お問い合わせ内容</strong><span>${data.detail}</span></div>
+                    `;
 
-                document.getElementById('modal').style.display = 'flex';
-            });
-    }
+                    document.getElementById('modal').style.display = 'flex';
+                });
+        }
 
-    document.addEventListener('DOMContentLoaded', function () {
-        const modal = document.getElementById('modal');
-        const closeBtn = document.getElementById('close');
-        const deleteBtn = document.getElementById('delete-btn');
-        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        document.addEventListener('DOMContentLoaded', function () {
+            const modal = document.getElementById('modal');
+            const closeBtn = document.getElementById('close');
+            const deleteBtn = document.getElementById('delete-btn');
+            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
-        modal.style.display = 'none';
-
-        closeBtn.onclick = function () {
             modal.style.display = 'none';
-        };
 
-        window.onclick = function (event) {
-            if (event.target === modal) {
+            closeBtn.onclick = function () {
                 modal.style.display = 'none';
-            }
-        };
+            };
 
-        deleteBtn.onclick = function () {
-            if (!currentId) return;
-
-            const result = confirm('このデータを削除しますか？');
-            if (!result) return;
-
-            fetch(`/admin/${currentId}`, {
-                method: 'DELETE',
-                headers: {
-                    'X-CSRF-TOKEN': csrfToken,
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
+            window.onclick = function (event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
                 }
-            })
-            .then(res => {
-                if (!res.ok) {
-                    throw new Error('削除に失敗しました');
-                }
-                return res.json();
-            })
-            .then(data => {
-                alert(data.message);
-                modal.style.display = 'none';
-                location.reload();
-            })
-            .catch(error => {
-                alert(error.message);
-            });
-        };
-    });
-</script>
+            };
+
+            deleteBtn.onclick = function () {
+                if (!currentId) return;
+
+                const result = confirm('このデータを削除しますか？');
+                if (!result) return;
+
+                fetch(`/admin/${currentId}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'X-CSRF-TOKEN': csrfToken,
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(res => {
+                    if (!res.ok) {
+                        throw new Error('削除に失敗しました');
+                    }
+                    return res.json();
+                })
+                .then(data => {
+                    alert(data.message);
+                    modal.style.display = 'none';
+                    location.reload();
+                })
+                .catch(error => {
+                    alert(error.message);
+                });
+            };
+        });
+    </script>
 
 </body>
 </html>

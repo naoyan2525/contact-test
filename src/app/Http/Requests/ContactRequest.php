@@ -6,26 +6,16 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class ContactRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
     public function authorize()
     {
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
     public function rules()
     {
         return [
             'last_name' => 'required|string|max:8',
-            'first_name' => 'required|string|max:8',  
+            'first_name' => 'required|string|max:8',
             'gender' => 'required|in:男性,女性,その他',
             'email' => 'required|email|max:255',
             'tel1' => 'required|regex:/^[0-9]+$/|max:5',
@@ -33,9 +23,8 @@ class ContactRequest extends FormRequest
             'tel3' => 'required|regex:/^[0-9]+$/|max:5',
             'address' => 'required|string',
             'building' => 'nullable|string',
-            'category' => 'required',
+            'category_id' => 'required',
             'detail' => 'required|max:120',
-
         ];
     }
 
@@ -48,16 +37,16 @@ class ContactRequest extends FormRequest
             'email.required' => 'メールアドレスを入力してください',
             'email.email' => 'メールアドレスはメール形式で入力してください',
             'tel1.required' => '電話番号を入力してください',
-            'tel1.regex' => '電話番号は半角英数字で入力してください',
+            'tel1.regex' => '電話番号は半角数字で入力してください',
             'tel1.max' => '電話番号は5桁まで数字で入力してください',
             'tel2.required' => '電話番号を入力してください',
-            'tel2.regex' => '電話番号は半角英数字で入力してください',
+            'tel2.regex' => '電話番号は半角数字で入力してください',
             'tel2.max' => '電話番号は5桁まで数字で入力してください',
             'tel3.required' => '電話番号を入力してください',
-            'tel3.regex' => '電話番号は半角英数字で入力してください',
+            'tel3.regex' => '電話番号は半角数字で入力してください',
             'tel3.max' => '電話番号は5桁まで数字で入力してください',
             'address.required' => '住所を入力してください',
-            'category.required' => 'お問い合わせの種類を選択してください',
+            'category_id.required' => 'お問い合わせの種類を選択してください',
             'detail.required' => 'お問い合わせの内容を入力してください',
             'detail.max' => 'お問い合わせ内容は120文字以内で入力してください。',
         ];
