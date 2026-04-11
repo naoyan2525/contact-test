@@ -6,118 +6,129 @@
   <link rel="stylesheet" href="{{ asset('css/index.css') }}">
 </head>
 <body>
-  
-<div class="header">FashionablyLate</div>
 
+  <div class="header">FashionablyLate</div>
   <div class="title">Contact</div>
 
   <form action="/confirm" method="POST">
+    @csrf
 
-<div class="contact-form">
-@csrf
- <div class="contact-form-group">
-  
+    <div class="contact-form">
+      <div class="contact-form-group">
 
-    <div class="contact-form-name">
-      <label>お名前 <span class="required">※</span></label>
-      <div class="flex">
-        <input type="text" name="last_name" placeholder="※山田">
-        
-        @error('last_name')
-         <p style="color:red;">{{ $message }}</p>
-        @enderror
+        <div class="form-row">
+          <label class="form-label">お名前 <span class="required">※</span></label>
+          <div class="form-input-area">
+            <div class="flex">
+              <input type="text" name="last_name" placeholder="※山田" value="{{ old('last_name') }}">
+              <input type="text" name="first_name" placeholder="※太郎" value="{{ old('first_name') }}">
+            </div>
+            <div class="error-flex">
+              <div class="error-box">
+                @error('last_name')
+                  <p class="error-message">{{ $message }}</p>
+                @enderror
+              </div>
+              <div class="error-box">
+                @error('first_name')
+                  <p class="error-message">{{ $message }}</p>
+                @enderror
+              </div>
+            </div>
+          </div>
+        </div>
 
-        <input type="text" name="first_name" placeholder="※太郎">
-        
-        @error('first_name')
-         <p style="color:red;">{{ $message }}</p>
-        @enderror
+        <div class="form-row">
+          <label class="form-label">性別 <span class="required">※</span></label>
+          <div class="form-input-area">
+            <div class="gender-group">
+              <label><input type="radio" name="gender" value="男性" {{ old('gender') == '男性' ? 'checked' : '' }}> 男性</label>
+              <label><input type="radio" name="gender" value="女性" {{ old('gender') == '女性' ? 'checked' : '' }}> 女性</label>
+              <label><input type="radio" name="gender" value="その他" {{ old('gender') == 'その他' ? 'checked' : '' }}> その他</label>
+            </div>
+            @error('gender')
+              <p class="error-message">{{ $message }}</p>
+            @enderror
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label class="form-label">メールアドレス <span class="required">※</span></label>
+          <div class="form-input-area">
+            <input type="email" name="email" placeholder="test@example.com" value="{{ old('email') }}">
+            @error('email')
+              <p class="error-message">{{ $message }}</p>
+            @enderror
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label class="form-label">電話番号 <span class="required">※</span></label>
+          <div class="form-input-area">
+            <div class="tel-group">
+              <input type="text" name="tel1" maxlength="4" placeholder="080" value="{{ old('tel1') }}">
+              <span>-</span>
+              <input type="text" name="tel2" maxlength="4" placeholder="1234" value="{{ old('tel2') }}">
+              <span>-</span>
+              <input type="text" name="tel3" maxlength="4" placeholder="5678" value="{{ old('tel3') }}">
+            </div>
+            @if ($errors->has('tel1') || $errors->has('tel2') || $errors->has('tel3'))
+              <p class="error-message">
+                {{ $errors->first('tel1') ?? $errors->first('tel2') ?? $errors->first('tel3') }}
+              </p>
+            @endif
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label class="form-label">住所 <span class="required">※</span></label>
+          <div class="form-input-area">
+            <input type="text" name="address" placeholder="例：東京都渋谷区千駄ヶ谷1-2-3" value="{{ old('address') }}">
+            @error('address')
+              <p class="error-message">{{ $message }}</p>
+            @enderror
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label class="form-label">建物名</label>
+          <div class="form-input-area">
+            <input type="text" name="building" placeholder="例：千駄ヶ谷マンション101" value="{{ old('building') }}">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label class="form-label">お問い合わせの種類 <span class="required">※</span></label>
+          <div class="form-input-area">
+            <div class="select-wrapper">
+              <select name="category">
+                <option value="">選択してください</option>
+                <option value="商品のお届けについて" {{ old('category') == '商品のお届けについて' ? 'selected' : '' }}>1. 商品のお届けについて</option>
+                <option value="商品の交換について" {{ old('category') == '商品の交換について' ? 'selected' : '' }}>2. 商品の交換について</option>
+                <option value="商品トラブル" {{ old('category') == '商品トラブル' ? 'selected' : '' }}>3. 商品トラブル</option>
+                <option value="ショップへのお問い合わせ" {{ old('category') == 'ショップへのお問い合わせ' ? 'selected' : '' }}>4. ショップへのお問い合わせ</option>
+                <option value="その他" {{ old('category') == 'その他' ? 'selected' : '' }}>5. その他</option>
+              </select>
+            </div>
+            @error('category')
+              <p class="error-message">{{ $message }}</p>
+            @enderror
+          </div>
+        </div>
+
+        <div class="form-row form-row-message">
+          <label class="form-label">お問い合わせの内容 <span class="required">※</span></label>
+          <div class="form-input-area">
+            <textarea name="detail" placeholder="お問い合わせ内容をご記載ください" rows="5">{{ old('detail') }}</textarea>
+            @error('detail')
+              <p class="error-message">{{ $message }}</p>
+            @enderror
+          </div>
+        </div>
+
+        <button type="submit">確認画面</button>
       </div>
-
-   </div>
-
-   
-    <div class="contact-form-gender">
-      <label>性別 <span class="required">※</span></label>
-    
-      <label><input type="radio" name="gender" value="男性" {{ old('gender') == '男性' ? 'checked' : '' }} > 男性</label>
-   
-      <label><input type="radio" name="gender" value="女性" {{ old('gender') == '女性' ? 'checked' : '' }}> 女性</label>
-    
-      <label><input type="radio" name="gender" value="その他" {{ old('gender') == 'その他' ? 'checked' : '' }}> その他</label>
-      @error('gender')
-         <p style="color:red;">{{ $message }}</p>
-      @enderror
     </div>
-
-
-    <div class="contact-form-email">
-      <label>メールアドレス <span class="required">※</span></label>
-      <input type="email" name="email" placeholder="test@example.com" >
-      @error('email')
-         <p style="color:red;">{{ $message }}</p>
-      @enderror
-    </div>
-
-    <div class="contact-form-tel">
-      <label>電話番号 <span class="required">※</span></label>
-      <div class="flex">
-        <input type="text" name="tel1" maxlength="4" placeholder="080"> -
-        <input type="text" name="tel2" maxlength="4" placeholder="1234"> -
-        <input type="text" name="tel3" maxlength="4" placeholder="5678">
-      </div>
-       @if ($errors->has('tel1') || $errors->has('tel2') || $errors->has('tel3'))
-        <p style="color:red;">
-      {{ $errors->first('tel1') ?? $errors->first('tel2') ?? $errors->first('tel3') }}
-        </p>
-      @endif
-    </div>
-
-  
-    <div class="contact-form-address">
-      <label>住所 <span class="required">※</span></label>
-      <input type="text" name="address" placeholder="例：東京都渋谷区千駄ヶ谷1-2-3">
-      @error('address')
-         <p style="color:red;">{{ $message }}</p>
-      @enderror 
-    </div>
-
-    
-    <div class="contact-form-building">
-      <label>建物名</label>
-      <input type="text" name="building" placeholder="例：千駄ヶ谷マンション101">
-    </div>
-     
-
-    <div class="contact-form-category">
-      <label>お問い合わせの種類 <span class="required">※</span></label>
-      <div class="select-wrapper">
-      <select name="category">
-        <option value="">選択してください</option>
-        <option value="商品のお届けについて">1. 商品のお届けについて</option>
-        <option value="商品の交換について">2. 商品の交換について</option>
-        <option value="商品トラブル">3. 商品トラブル</option>
-        <option value="ショップへのお問い合わせ">4. ショップへのお問い合わせ</option>
-        <option value="その他">5. その他</option>
-      </select>
-      @error('category')
-         <p style="color:red;">{{ $message }}</p>
-      @enderror 
-      </div>
-    </div>
-
-  
-    <div class="contact-form-message">
-      <label>お問い合わせの内容 <span class="required">※</span></label>
-      <textarea name="detail" placeholder="お問い合わせ内容をご記載ください" rows="5"></textarea>
-      @error('detail')
-         <p style="color:red;">{{ $message }}</p>
-      @enderror
-    </div>
-
-    <button type="submit">確認画面</button>
- </div>
-</div>
   </form>
 
 </body>

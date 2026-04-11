@@ -15,12 +15,12 @@
     margin-bottom: 30px;
     font-family: "Times New Roman", "游明朝", serif;
 }
+
 body {
     font-family: sans-serif;
-    background-color: #ffffffff;
-    color: rgb(139, 121, 105)
+    background-color: #ffffff;
+    color: rgb(139, 121, 105);
 }
-
 
 .contact-form {
     max-width: 900px;
@@ -28,95 +28,118 @@ body {
     margin: 0 auto;
 }
 
-
-.contact-form-group>div {
+.form-row {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 20px;
 }
 
-
-.contact-form-group label:first-child {
+.form-label {
     width: 220px;
     font-size: 14px;
+    padding-top: 10px;
+    flex-shrink: 0;
 }
 
+.form-input-area {
+    flex: 1;
+}
 
 .required {
     color: red;
 }
 
-
-input,
-textarea {
-    flex: 1;
+/* ここを修正 */
+input[type="text"],
+input[type="email"],
+textarea,
+select {
+    width: 100%;
     padding: 10px;
     border: none;
     background-color: #eee;
     border-radius: 4px;
-
+    color: rgb(139, 121, 105);
+    box-sizing: border-box;
 }
 
 input::placeholder,
 textarea::placeholder {
-
     color: rgb(139, 121, 105);
 }
 
-
-
-
-select {
-    color: rgb(139, 121, 105);
+.flex {
+    display: flex;
+    gap: 30px;
 }
+
+.flex input {
+    flex: 1;
+}
+
+.error-flex {
+    display: flex;
+    gap: 30px;
+    margin-top: 8px;
+}
+
+.error-box {
+    flex: 1;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin: 0;
+}
+
+.gender-group {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.gender-group label {
+    width: auto;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+input[type="radio"] {
+    width: auto;
+    margin: 0;
+}
+
+.tel-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.tel-group input {
+    width: 100px;
+}
+
 .select-wrapper {
     position: relative;
-    width: 100%;
-    flex: 0.5;
-  
+    width: 50%;
 }
-
 
 .select-wrapper select {
-    width: 100%;
-    padding: 10px 40px 10px 10px;
-    border: none;
-    background-color: #eee;
     appearance: none;
-    border-radius: 4px;
+    padding: 10px 40px 10px 10px;
 }
-
 
 .select-wrapper::after {
     content: "⏷";
     position: absolute;
     right: 12px;
-    top: 35%;
+    top: 50%;
     transform: translateY(-50%);
     pointer-events: none;
     font-size: 30px;
     color: #5c4b3b;
-}
-
-
-.flex {
-    display: flex;
-    gap: 30px;
-    flex: 1;
-}
-
-.contact-form-tel input {
-    width: 80px;
-}
-
-.contact-form-gender {
-    display: flex;
-    align-items: center;
-}
-
-.contact-form-gender label {
-    width: auto;
-    margin-right: 20px;
 }
 
 textarea {
