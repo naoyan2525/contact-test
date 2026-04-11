@@ -21,17 +21,26 @@
 
         <div class="form-item">
             <label>お名前</label>
-            <input type="text" name="name" value="{{ old('name') }}" placeholder="例：山田 太郎" required>
+            <input type="text" name="name" value="{{ old('name') }}" placeholder="例：山田 太郎">
+            @error('name')
+                <p class="error-message">{{ $message }}</p>
+            @enderror
         </div>
 
         <div class="form-item">
             <label>メールアドレス</label>
-            <input type="email" name="email" value="{{ old('email') }}" placeholder="例：test@example.com" required>
+            <input type="email" name="email" value="{{ old('email') }}" placeholder="例：test@example.com">
+            @error('email')
+                <p class="error-message">{{ $message }}</p>
+            @enderror
         </div>
 
         <div class="form-item">
             <label>パスワード</label>
-            <input type="password"  name="password" value="{{ old('password') }}" placeholder="例：coachtech1106" required>
+            <input type="password" name="password" placeholder="例：coachtech1106">
+            @error('password')
+                <p class="error-message">{{ $message }}</p>
+            @enderror
         </div>
 
         <button type="submit" class="btn">登録</button>

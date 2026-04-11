@@ -39,11 +39,9 @@
 
 body {
     font-family: sans-serif;
-    background-color: #ffffffff;
     color: rgb(139, 121, 105);
     background-color: #f5f5f5;
 }
-
 
 .form-box {
     width: 400px;
@@ -54,18 +52,15 @@ body {
     border-radius: 4px;
 }
 
-
 .form-item {
     margin-bottom: 25px;
 }
-
 
 .form-item label {
     display: block;
     font-size: 14px;
     margin-bottom: 8px;
 }
-
 
 .form-item input {
     width: 100%;
@@ -74,13 +69,20 @@ body {
     background-color: #ffffff;
     font-size: 14px;
     outline: none;
+    box-sizing: border-box;
 }
-
 
 .form-item input:focus {
     border-color: #8b7b72;
 }
 
+.error-message {
+    color: red;
+    font-size: 13px;
+    margin-top: 6px;
+    margin-bottom: 0;
+    line-height: 1.4;
+}
 
 .btn {
     width: 100%;
@@ -91,7 +93,6 @@ body {
     font-size: 14px;
     cursor: pointer;
 }
-
 
 .btn:hover {
     opacity: 0.8;

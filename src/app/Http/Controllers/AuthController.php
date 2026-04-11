@@ -26,6 +26,19 @@ class AuthController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:8',
+        ], [
+            'name.required' => 'お名前を入力してください',
+            'email.required' => 'メールアドレスを入力してください',
+            'email.email' => 'メールアドレスはメール形式で入力してください',
+            'email.unique' => 'このメールアドレスは既に使用されています',
+            'password.required' => 'パスワードを入力してください',
+            'password.min' => 'パスワードは8文字以上で入力してください',
+        ]);
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -38,21 +51,27 @@ class AuthController extends Controller
     }
 
     public function loginProcess(Request $request)
-{
-    $credentials = $request->only('email', 'password');
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ], [
+            'email.required' => 'メールアドレスを入力してください',
+            'email.email' => 'メールアドレスはメール形式で入力してください',
+            'password.required' => 'パスワードを入力してください',
+        ]);
 
-    if (Auth::attempt($credentials)) {
-     
-        $request->session()->regenerate();
-        return redirect('/admin');
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect('/admin');
+        }
+
+        return back()->withErrors([
+            'email' => 'メールアドレスかパスワードが間違っています',
+        ])->withInput();
     }
-
-   
-    return back()->withErrors([
-        'email' => 'メールアドレスかパスワードが間違っています',
-    ]);
-}
-
 
     public function logout(Request $request)
     {
