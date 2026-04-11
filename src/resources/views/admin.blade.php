@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>管理画面</title>
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
 
@@ -100,43 +101,86 @@
         <div class="modal-content">
             <span id="close" class="close-btn">×</span>
             <div id="modal-body"></div>
+
+        <div class="modal-footer">
+            <button id="delete-btn" class="delete-btn">削除</button>
+        </div>
         </div>
     </div>
 
     <script>
-        function openModal(id) {
-            fetch(`/admin/${id}`)
-                .then(res => res.json())
-                .then(data => {
-                    document.getElementById('modal-body').innerHTML = `
-                        <div class="modal-row"><strong>お名前</strong><span>${data.last_name} ${data.first_name}</span></div>
-                        <div class="modal-row"><strong>性別</strong><span>${data.gender}</span></div>
-                        <div class="modal-row"><strong>メールアドレス</strong><span>${data.email}</span></div>
-                        <div class="modal-row"><strong>電話番号</strong><span>${data.tel}</span></div>
-                        <div class="modal-row"><strong>住所</strong><span>${data.address}</span></div>
-                        <div class="modal-row"><strong>建物名</strong><span>${data.building ?? ''}</span></div>
-                        <div class="modal-row"><strong>お問い合わせの種類</strong><span>${data.category}</span></div>
-                        <div class="modal-row"><strong>お問い合わせ内容</strong><span>${data.detail}</span></div>
-                    `;
-                    document.getElementById('modal').style.display = 'flex';
-                });
-        }
+    let currentId = null;
 
-        document.addEventListener('DOMContentLoaded', function () {
-            const modal = document.getElementById('modal');
+    function openModal(id) {
+        currentId = id;
+
+        fetch(`/admin/${id}`)
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById('modal-body').innerHTML = `
+                    <div class="modal-row"><strong>お名前</strong><span>${data.last_name} ${data.first_name}</span></div>
+                    <div class="modal-row"><strong>性別</strong><span>${data.gender}</span></div>
+                    <div class="modal-row"><strong>メールアドレス</strong><span>${data.email}</span></div>
+                    <div class="modal-row"><strong>電話番号</strong><span>${data.tel}</span></div>
+                    <div class="modal-row"><strong>住所</strong><span>${data.address}</span></div>
+                    <div class="modal-row"><strong>建物名</strong><span>${data.building ?? ''}</span></div>
+                    <div class="modal-row"><strong>お問い合わせの種類</strong><span>${data.category}</span></div>
+                    <div class="modal-row"><strong>お問い合わせ内容</strong><span>${data.detail}</span></div>
+                `;
+
+                document.getElementById('modal').style.display = 'flex';
+            });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const modal = document.getElementById('modal');
+        const closeBtn = document.getElementById('close');
+        const deleteBtn = document.getElementById('delete-btn');
+        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+        modal.style.display = 'none';
+
+        closeBtn.onclick = function () {
             modal.style.display = 'none';
+        };
 
-            document.getElementById('close').onclick = function () {
+        window.onclick = function (event) {
+            if (event.target === modal) {
                 modal.style.display = 'none';
-            };
+            }
+        };
 
-            window.onclick = function (event) {
-                if (event.target === modal) {
-                    modal.style.display = 'none';
+        deleteBtn.onclick = function () {
+            if (!currentId) return;
+
+            const result = confirm('このデータを削除しますか？');
+            if (!result) return;
+
+            fetch(`/admin/${currentId}`, {
+                method: 'DELETE',
+                headers: {
+                    'X-CSRF-TOKEN': csrfToken,
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
                 }
-            };
-        });
-    </script>
+            })
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error('削除に失敗しました');
+                }
+                return res.json();
+            })
+            .then(data => {
+                alert(data.message);
+                modal.style.display = 'none';
+                location.reload();
+            })
+            .catch(error => {
+                alert(error.message);
+            });
+        };
+    });
+</script>
 
 </body>
 </html>

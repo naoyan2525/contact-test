@@ -222,7 +222,7 @@ body {
 }
 
 .detail-btn {
-    display: inline-block;
+    display: block;
     padding: 7px 16px;
     border: 1px solid #d6c8bc;
     background-color: #fdfbf9;
@@ -230,6 +230,8 @@ body {
     cursor: pointer;
     text-decoration: none;
     font-size: 14px;
+    margin: 0 auto;
+        
 }
 
 .detail-btn:hover {
@@ -269,11 +271,28 @@ body {
     color: #8b7b72;
 }
 
+.modal-footer {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.delete-btn {
+    padding: 8px 18px;
+    background-color: #830002;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+
+}
+
+.delete-btn:hover {
+    background-color: #b55555;
+}
+
 .modal-row {
     display: flex;
     gap: 30px;
     padding: 12px 0;
-    border-bottom: 1px solid #eee6df;
 }
 
 .modal-row strong {

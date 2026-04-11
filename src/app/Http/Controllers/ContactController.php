@@ -17,11 +17,23 @@ class ContactController extends Controller
     }
 
     public function admin()
-{
+    {
     $contacts = Contact::all();
     return view('admin', compact('contacts'));
-}
+    }
 
+    public function destroy($id)
+    {
+    $contact = Contact::find($id);
+
+    if (!$contact) {
+        return response()->json(['message' => 'データが見つかりません'], 404);
+    }
+
+    $contact->delete();
+
+    return response()->json(['message' => '削除しました']);
+    }
 
     public function confirm(ContactRequest $request)
     {
