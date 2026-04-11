@@ -12,7 +12,7 @@
         FashionablyLate
         <form action="/logout" method="POST" style="display:inline;">
             @csrf
-            <button type="submit" class="register-btn">logout</button>
+            <button type="submit" class="logout-btn">logout</button>
         </form>
     </div>
 
@@ -57,8 +57,7 @@
         </form>
 
         <div class="export-pagination">
-         <a href="{{ route('admin.export', request()->query()) }}" class="export-btn">エクスポート</a>
-
+        <a href="{{ route('admin.export', request()->query()) }}" class="export-btn">エクスポート</a>
         <div class="pagination">
          @if ($contacts->onFirstPage())
         <span class="page-btn disabled">&lt;</span>

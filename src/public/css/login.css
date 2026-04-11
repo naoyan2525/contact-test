@@ -1,35 +1,33 @@
-/* ===== ヘッダー ===== */
 .header {
     position: relative;
     text-align: center;
     font-size: 40px;
     font-family: "Times New Roman", "游明朝", serif;
-    border-bottom: 1px solid #cccccc;
     padding: 20px 0;
     color: rgb(139, 121, 105);
+    background-color: #ffffff;
 }
 
 .header .register-btn {
     position: absolute;
     top: 50%;
-    right: 30px;
+    right: 100px;
     transform: translateY(-50%);
     padding: 8px 20px;
-    background-color: #d1bfa7;
-    color: #fff;
+    background-color: rgb(241, 236, 230);
+    color: #c8b6a6;
     font-size: 14px;
     font-weight: bold;
     text-decoration: none;
-    border-radius: 6px;
     display: inline-block;
     transition: background-color 0.3s;
+    border: 1px solid #c8b6a6;
 }
 
 .header .register-btn:hover {
     background-color: #b49b82;
 }
 
-/* ===== タイトル ===== */
 .title {
     text-align: center;
     font-size: 35px;
@@ -39,14 +37,13 @@
     font-family: "Times New Roman", "游明朝", serif;
 }
 
-/* ===== 全体 ===== */
 body {
     font-family: sans-serif;
     color: rgb(139, 121, 105);
-    background-color: #f5f5f5;
+    background-color: rgb(241, 236, 230);
+    margin: 0;
 }
 
-/* ===== フォームボックス ===== */
 .form-box {
     width: 400px;
     margin: 0 auto;
@@ -57,20 +54,16 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
 }
 
-/* ===== 入力グループ ===== */
 .form-item {
     margin-bottom: 20px;
-    /* エラー出てもズレない */
 }
 
-/* ===== ラベル ===== */
 .form-item label {
     display: block;
     font-size: 14px;
     margin-bottom: 8px;
 }
 
-/* ===== 入力欄 ===== */
 .form-item input {
     width: 100%;
     padding: 10px;
@@ -81,17 +74,14 @@ body {
     box-sizing: border-box;
 }
 
-/* ===== フォーカス ===== */
 .form-item input:focus {
     border-color: #8b7b72;
 }
 
-/* ===== プレースホルダー ===== */
 .form-item input::placeholder {
     color: #c0b5ae;
 }
 
-/* ===== エラーメッセージ ===== */
 .error-message {
     color: red;
     font-size: 13px;
@@ -100,7 +90,6 @@ body {
     line-height: 1.4;
 }
 
-/* ===== ボタン ===== */
 .btn {
     width: 100%;
     padding: 12px;
@@ -111,7 +100,7 @@ body {
     cursor: pointer;
 }
 
-/* ===== ホバー ===== */
+
 .btn:hover {
     opacity: 0.8;
 }

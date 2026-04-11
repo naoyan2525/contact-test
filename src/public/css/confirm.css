@@ -44,6 +44,8 @@ body {
     background-color: #b7a59c;
     color: #fff;
     padding: 15px;
+    padding-left: 50px;
+    text-align: left;
     font-size: 14px;   
     border-right: 1px solid #e0d6d0;
 }
@@ -51,6 +53,8 @@ body {
 .value {
     width: 70%;
     padding: 15px;
+    padding-left: 50px;
+    text-align: left;
     background-color: #f9f7f5;
     font-size: 14px;
     word-break: break-all;

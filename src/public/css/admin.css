@@ -15,23 +15,23 @@ body {
     color: rgb(139, 121, 105);
 }
 
-.header .register-btn {
+.header .logout-btn {
     position: absolute;
     top: 50%;
-    right: 70px;
+    right: 100px;
     transform: translateY(-50%);
-    padding: 8px 18px;
-    background-color: #f6f1eb;
-    color: #c3a995;
+    padding: 8px 20px;
+    background-color: rgb(241, 236, 230);
+    color: #c8b6a6;
     font-size: 14px;
     font-weight: bold;
     text-decoration: none;
-    border: 1px solid #d8c8bc;
-    border-radius: 2px;
+    display: inline-block;
     transition: background-color 0.3s;
+    border: 1px solid #c8b6a6;    
 }
 
-.header .register-btn:hover {
+.header .logout-btn:hover {
     background-color: #ede4dc;
 }
 
@@ -50,7 +50,6 @@ body {
     padding-bottom: 80px;
 }
 
-/* 検索エリア */
 .search-box {
     display: flex;
     align-items: center;
@@ -70,7 +69,7 @@ body {
     box-sizing: border-box;
 }
 
-/* select wrapper */
+
 .select-wrap {
     position: relative;
     height: 44px;
@@ -111,7 +110,6 @@ body {
     pointer-events: none;
 }
 
-/* date */
 .date-wrap {
     width: 130px;
     flex-shrink: 0;
@@ -128,7 +126,7 @@ body {
     box-sizing: border-box;
 }
 
-/* ボタン */
+
 .btn {
     height: 44px;
     min-width: 93px;
@@ -168,20 +166,24 @@ body {
 }
 
 .export-btn {
+    display: inline-block;
     padding: 8px 18px;
     background-color: #eee8e3;
     color: #8b7b72;
     border: none;
+    text-decoration: none;
     font-size: 14px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
+
 .export-btn:hover {
     background-color: #e2d8d0;
 }
 
-/* ページネーション */
+
+
 .pagination {
     display: flex;
     align-items: center;
@@ -215,7 +217,7 @@ body {
     border: 1px solid #8b7b72;
 }
 
-/* テーブル */
+
 .contact-table {
     width: 100%;
     border-collapse: collapse;
@@ -239,12 +241,12 @@ body {
     transition: background-color 0.3s;
 }
 
-/* ヘッダー以外の行にhover */
+
 .contact-table tr:not(:first-child):hover td {
     background-color: #f7f3ef;
 }
 
-/* 行にマウスが乗った感じを少し出す */
+
 .contact-table tr:not(:first-child) {
     transition: background-color 0.3s;
 }
@@ -273,7 +275,7 @@ body {
     color: #8b7b72;
 }
 
-/* モーダル */
+
 .modal {
     position: fixed;
     inset: 0;

@@ -49,7 +49,6 @@ body {
     color: red;
 }
 
-/* ここを修正 */
 input[type="text"],
 input[type="email"],
 textarea,
@@ -135,7 +134,7 @@ input[type="radio"] {
     content: "⏷";
     position: absolute;
     right: 12px;
-    top: 50%;
+    top: 30%;   
     transform: translateY(-50%);
     pointer-events: none;
     font-size: 30px;
